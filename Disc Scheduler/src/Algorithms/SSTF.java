@@ -6,10 +6,6 @@ public class SSTF {
         int Queue[] = new int[Q.length+1];
         Queue[0]=IH;
         
-        for(int i=0;i<Q.length;i++){
-            Queue[i+1] = Q[i];
-        }
-        
         String SeekTime[] = new String[Q.length+1];
         SeekTime[0] = "0";
         
@@ -33,7 +29,7 @@ public class SSTF {
             }
             visited[pos]=1;
             seek_time += Math.abs(Q[pos] - IH);
-            Queue[i+1] = Q[i];
+            Queue[i+1] = Q[pos];
             SeekTime[i+1] = seek_time+"";
             IH = Q[pos];
         }

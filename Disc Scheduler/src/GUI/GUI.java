@@ -3,7 +3,7 @@ package GUI;
 import Algorithms.*;
 import java.awt.Color;
 import javax.swing.JOptionPane;
-import org.jfree.ui.RefineryUtilities;
+import org.jfree.chart.ui.UIUtils;
 
 public class GUI extends javax.swing.JFrame {
     public GUI() {
@@ -299,7 +299,7 @@ public class GUI extends javax.swing.JFrame {
             Parameters = a.FCFS(Queue, IH);
             Graph demo = new Graph("FCFS",Parameters);
             demo.pack();
-            RefineryUtilities.centerFrameOnScreen(demo);
+            UIUtils.centerFrameOnScreen(demo);
             demo.setVisible(true);
         }
         else if(RB2.isSelected()){
@@ -308,51 +308,51 @@ public class GUI extends javax.swing.JFrame {
             Parameters = a.SSTF(Queue, IH);
             Graph demo = new Graph("SSTF",Parameters);
             demo.pack();
-            RefineryUtilities.centerFrameOnScreen(demo);
+            UIUtils.centerFrameOnScreen(demo);
             demo.setVisible(true);
         }
         else if(RB3.isSelected()){
             int IH = Integer.parseInt(InitialHeaderTF.getText());
             int PH = Integer.parseInt(PreviousHeaderTF.getText());
             int TT = Integer.parseInt(TrailTrackTF.getText());
-            SCAN a = new SCAN(Queue,IH,PH,TT);
-//            Parameters = a.FCFS(Queue, IH);
-//            Graph demo = new Graph("FCFS",Parameters);
-//            demo.pack();
-//            RefineryUtilities.centerFrameOnScreen(demo);
-//            demo.setVisible(true);
+            SCAN a = new SCAN();
+            Parameters = a.SCAN(Queue,IH,PH,TT);
+            Graph demo = new Graph("SSTF",Parameters);
+            demo.pack();
+            UIUtils.centerFrameOnScreen(demo);
+            demo.setVisible(true);
         
         }
         else if(RB4.isSelected()){
             int IH = Integer.parseInt(InitialHeaderTF.getText());
             int PH = Integer.parseInt(PreviousHeaderTF.getText());
             int TT = Integer.parseInt(TrailTrackTF.getText());
-            CSCAN a= new CSCAN(Queue,IH,PH,TT);
-//            Parameters = a.FCFS(Queue, IH);
-//            Graph demo = new Graph("FCFS",Parameters);
-//            demo.pack();
-//            RefineryUtilities.centerFrameOnScreen(demo);
-//            demo.setVisible(true);
+            CSCAN a = new CSCAN();
+            Parameters = a.CSCAN(Queue,IH,PH,TT);
+            Graph demo = new Graph("SSTF",Parameters);
+            demo.pack();
+            UIUtils.centerFrameOnScreen(demo);
+            demo.setVisible(true);
         }
         else if(RB5.isSelected()){
             int IH = Integer.parseInt(InitialHeaderTF.getText());
             int PH = Integer.parseInt(PreviousHeaderTF.getText());
-            LOOK a = new LOOK(Queue,IH,PH);
-//            Parameters = a.FCFS(Queue, IH);
-//            Graph demo = new Graph("FCFS",Parameters);
-//            demo.pack();
-//            RefineryUtilities.centerFrameOnScreen(demo);
-//            demo.setVisible(true);
+            LOOK a = new LOOK();
+            Parameters = a.LOOK(Queue,IH,PH);
+            Graph demo = new Graph("SSTF",Parameters);
+            demo.pack();
+            UIUtils.centerFrameOnScreen(demo);
+            demo.setVisible(true);
         }
         else if(RB6.isSelected()){
             int IH = Integer.parseInt(InitialHeaderTF.getText());
             int PH = Integer.parseInt(PreviousHeaderTF.getText());
-            CLOOK a = new CLOOK(Queue,IH,PH);
-//            Parameters = a.FCFS(Queue, IH);
-//            Graph demo = new Graph("FCFS",Parameters);
-//            demo.pack();
-//            RefineryUtilities.centerFrameOnScreen(demo);
-//            demo.setVisible(true);
+            CLOOK a = new CLOOK();
+            Parameters = a.CLOOK(Queue, IH,PH);
+            Graph demo = new Graph("FCFS",Parameters);
+            demo.pack();
+            UIUtils.centerFrameOnScreen(demo);
+            demo.setVisible(true);
         }
         else{
             JOptionPane.showMessageDialog(null,"Please select an algorithm first");

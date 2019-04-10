@@ -4,13 +4,18 @@ package Algorithms;
  * @author Lalwani*
  ******************/
 public class LOOK {
-	public LOOK(int[] Queue,int IH,int PH)
+	public Object[] LOOK(int[] Q,int IH,int PH)
 	{
-		int dl=0,seek_time=0,i,j,f=0,n=Queue.length;
+		int seek_time=0,i,j,f=0,n=Q.length;
+                
+                String SeekTime[] = new String[Q.length+1];
+                SeekTime[0] = "0";
+        
+                int[] Queue = new int[Q.length+1];
+                Queue[0]=IH;
+                
 		int[] visited = new int[n+1];
-		
-		System.out.println("Disk Location \t Seek Time");
-		
+
 		if(PH<=IH) f=0;
 		else f=1;
 		
@@ -20,29 +25,24 @@ public class LOOK {
 			int min = 10000;
 			for(j=0;j<n;j++)
 			{
-				//System.out.println(Queue[j]+"/"+IH);
 				if(f==0)
 				{
-					//System.out.println(Math.abs(Queue[j] - IH)+"//");
-					if(Queue[j]>IH && min>Math.abs(Queue[j]-IH) && visited[j]==0)
+					if(Q[j]>IH && min>Math.abs(Q[j]-IH) && visited[j]==0)
 					{
-						//System.out.println(Math.abs(Queue[j] - IH));
-						min = Math.abs(Queue[j] - IH);
+						min = Math.abs(Q[j] - IH);
 						pos = j;
 					}
 				}
 				
 				else if(f==1)
 				{
-					if(Queue[j]<=IH && min>Math.abs(Queue[j]-IH) && visited[j]==0)
+					if(Q[j]<=IH && min>Math.abs(Q[j]-IH) && visited[j]==0)
 					{
-						//System.out.println(Math.abs(Queue[j] - IH));
 						pos = j;
-						min = Math.abs(Queue[j]-IH);
+						min = Math.abs(Q[j]-IH);
 					}
 				}
 			}
-			//System.out.println(pos);
 			if(pos==-1)
 			{
 				if(f==0)
@@ -53,21 +53,17 @@ public class LOOK {
 				{
 					f=0;
 				}
-				System.out.println("-------------------------------------------------");
-				System.out.println("Changing Directions");
-				System.out.println("-------------------------------------------------");
-				System.out.println("Disk Location \t Seek Time");
 				i--;
 				continue;
 			}
 			visited[pos] = 1;
-			seek_time += Math.abs(Queue[pos] - IH);
-			System.out.println(Queue[pos]+"\t\t "+seek_time);
-			IH = Queue[pos];
+			seek_time += Math.abs(Q[pos] - IH);
+			Queue[i+1] = Q[pos];
+                        SeekTime[i+1] = seek_time+"";
+			IH = Q[pos];
 		}
 		
-		System.out.println();
-		System.out.println("Total Seek Time :"+seek_time);
+		return new Object[]{Queue,SeekTime};
 	}
 
 }
